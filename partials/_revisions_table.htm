@@ -1,0 +1,43 @@
+<?php
+  $revisions = $model->revisions();
+?>
+<div style="margin: -15px -20px -25px">
+  <table class="table data" data-control="rowlink" >
+      <tbody>
+        <?php if ($revisions->count()): ?>
+          <?php foreach($revisions as $revision): ?>
+            <tr>
+              <td><i class="icon-info"></i> <?= ucfirst($revision->type); ?></td>
+              <td><i class="icon-calendar"></i> <?= $revision->created_at->toDayDateTimeString(); ?></td>
+              <td><i class="icon-user"></i> <?= $revision->user->full_name ?></td>
+              <td class="column-button nolink">
+                  <a
+                      href="<?= url('revision/cms/page/' . $revision->id) ?>"
+                      target="_blank"
+                      class="btn btn-link oc-icon-crosshairs">
+                      Preview
+                  </a>
+              </td>
+              <?php if (\BackendAuth::getUser()->hasPermission(['system.access_logs'])): ?>
+              <td class="column-button nolink">
+                  <a
+                      href="<?= (new Backend\Helpers\Backend)->url('cms/themelogs/preview/' . $revision->id) ?>"
+                      class="btn btn-link oc-icon-hdd-o">
+                      Details
+                  </a>
+              </td>
+            <?php endif; ?>
+            </tr>
+          <?php endforeach; ?>
+      <?php else: ?>
+        <tr class="no-data">
+            <td colspan="100" class="nolink">
+                <p class="no-data">
+                    There are no records in this view.
+                </p>
+            </td>
+        </tr>
+      <?php endif; ?>
+      </tbody>
+  </table>
+</div>

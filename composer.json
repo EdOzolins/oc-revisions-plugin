@@ -1,0 +1,18 @@
+{
+    "name": "nedstrk/oc-revisions-plugin",
+    "type": "october-plugin",
+    "description": "CMS page revisions plugin",
+    "keywords": ["october", "cms", "revisions", "pages", "plugin"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Edgars Ozolins",
+            "email": "ed@ozol.in",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "composer/installers": "~1.0"
+    }
+}
